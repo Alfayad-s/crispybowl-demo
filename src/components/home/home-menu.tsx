@@ -10,7 +10,7 @@ export function HomeMenu() {
     <section
       id="menu"
       aria-labelledby="menu-heading"
-      className="bg-neutral-50 px-6 py-20 sm:px-8 lg:px-10 lg:py-28"
+      className="scroll-mt-24 bg-neutral-50 px-6 py-20 sm:scroll-mt-28 sm:px-8 lg:px-10 lg:py-28"
     >
       <GsapRevealGroup className="mx-auto max-w-[82rem]">
         <div className="max-w-4xl text-left">

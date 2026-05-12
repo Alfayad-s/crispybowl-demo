@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { GsapHeroIntro } from "@/components/animation/gsap-hero-intro";
 
 import { HeroChickenCarousel } from "./hero-chicken-carousel";
@@ -36,20 +38,20 @@ export function HomeHero() {
             </p>
 
             <div className="flex flex-nowrap items-center gap-3 overflow-x-auto pb-1 sm:flex-wrap sm:overflow-x-visible sm:pb-0">
-              <button
-                type="button"
-                className="flex cursor-pointer items-center gap-3 rounded-full bg-black px-6 py-3 text-base font-semibold whitespace-nowrap text-white transition-all hover:scale-[1.03] hover:bg-amber-600 sm:px-8 sm:py-4 sm:text-lg"
+              <Link
+                href="/#menu"
+                className="inline-flex cursor-pointer items-center gap-3 rounded-full bg-black px-6 py-3 text-base font-semibold whitespace-nowrap text-white transition-all hover:scale-[1.03] hover:bg-amber-600 sm:px-8 sm:py-4 sm:text-lg"
               >
                 Order Now
                 <span aria-hidden>→</span>
-              </button>
+              </Link>
 
-              <button
-                type="button"
-                className="cursor-pointer rounded-full border-2 border-black px-6 py-3 text-base font-semibold whitespace-nowrap text-neutral-900 transition-colors duration-300 ease-out hover:border-[#cc2126] hover:bg-[#cc2126] hover:text-white active:border-[#a61a1e] active:bg-[#a61a1e] sm:px-8 sm:py-4 sm:text-lg"
+              <Link
+                href="/#menu"
+                className="inline-flex cursor-pointer rounded-full border-2 border-black px-6 py-3 text-base font-semibold whitespace-nowrap text-neutral-900 transition-colors duration-300 ease-out hover:border-[#cc2126] hover:bg-[#cc2126] hover:text-white active:border-[#a61a1e] active:bg-[#a61a1e] sm:px-8 sm:py-4 sm:text-lg"
               >
                 See the Menu
-              </button>
+              </Link>
             </div>
           </div>
         </div>
