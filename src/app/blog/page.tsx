@@ -5,7 +5,14 @@ import { GsapRevealGroup } from "@/components/animation/gsap-reveal-group";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "News, recipes, and updates from Crispybowl.",
+  description:
+    "Crispybowl blog — kitchen stories, specials, and news from our fried chicken shop.",
+  openGraph: {
+    title: "Blog · Crispybowl",
+    description:
+      "Stories, specials, and updates from Crispybowl’s fried chicken kitchen.",
+    url: "/blog",
+  },
 };
 
 export default function BlogPage() {

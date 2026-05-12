@@ -23,26 +23,75 @@ const pogoniaBold = localFont({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
+const siteTitle = "Crispybowl";
+const siteDescription =
+  "Crispybowl is a fried chicken shop serving golden, hand-breaded chicken cooked to order—loud crunch, juicy meat, and bold flavor in every bucket, box, and bite.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000",
-  ),
+  metadataBase: new URL(siteUrl),
+  applicationName: siteTitle,
   title: {
-    default: "Crispybowl",
-    template: "%s · Crispybowl",
+    default: siteTitle,
+    template: `%s · ${siteTitle}`,
   },
-  description:
-    "Production-ready Next.js starter with strict TypeScript, Tailwind CSS v4, and shadcn/ui.",
+  description: siteDescription,
+  keywords: [
+    "Crispybowl",
+    "fried chicken",
+    "chicken restaurant",
+    "hand-breaded chicken",
+    "chicken buckets",
+    "crispy chicken",
+    "takeout chicken",
+    "fast casual chicken",
+  ],
+  authors: [{ name: siteTitle }],
+  creator: siteTitle,
+  publisher: siteTitle,
+  category: "food",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  alternates: {
+    canonical: "/",
+  },
+  icons: {
+    icon: [{ url: "/logo-bg.jpg", type: "image/jpeg", sizes: "any" }],
+    shortcut: "/logo-bg.jpg",
+    apple: [{ url: "/logo-bg.jpg", type: "image/jpeg", sizes: "1080x1080" }],
+  },
   openGraph: {
-    title: "Crispybowl",
-    description:
-      "Production-ready Next.js starter with strict TypeScript, Tailwind CSS v4, and shadcn/ui.",
+    type: "website",
+    locale: "en_US",
+    url: "/",
+    siteName: siteTitle,
+    title: `${siteTitle} | Fried chicken, made fresh`,
+    description: siteDescription,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Crispybowl — golden fried chicken, buckets, and order now",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteTitle} | Fried chicken, made fresh`,
+    description: siteDescription,
+    images: ["/og-image.png"],
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: light)", color: "#0c3d32" },
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
 };

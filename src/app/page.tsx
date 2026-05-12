@@ -9,6 +9,14 @@ import { SplashScreen } from "@/components/splash/splash-screen";
 
 export const metadata: Metadata = {
   title: "Home",
+  description:
+    "Order Crispybowl’s hand-breaded fried chicken—buckets, combos, and sides made fresh. Crispy outside, juicy inside.",
+  openGraph: {
+    title: "Crispybowl | Hand-breaded fried chicken",
+    description:
+      "Order Crispybowl’s hand-breaded fried chicken—buckets, combos, and sides made fresh. Crispy outside, juicy inside.",
+    url: "/",
+  },
 };
 
 export default function Home() {
