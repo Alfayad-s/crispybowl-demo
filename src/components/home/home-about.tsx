@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { GsapRevealGroup } from "@/components/animation/gsap-reveal-group";
+
 export function HomeAbout() {
   return (
     <section
@@ -8,7 +10,7 @@ export function HomeAbout() {
       aria-labelledby="about-heading"
       className="rounded-t-xl bg-[#0c3d32] px-6 py-20 text-white sm:px-8 lg:px-10 lg:py-28"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-12 text-left lg:grid-cols-[1fr_minmax(0,26rem)] lg:gap-x-16 xl:gap-x-24">
+      <GsapRevealGroup className="mx-auto grid max-w-7xl items-center gap-12 text-left lg:grid-cols-[1fr_minmax(0,26rem)] lg:gap-x-16 xl:gap-x-24">
         <div className="min-w-0 lg:max-w-xl lg:justify-self-start">
           <p className="font-hero-display text-sm font-bold tracking-[0.2em] text-[#FDB913]">
             OUR STORY
@@ -51,7 +53,7 @@ export function HomeAbout() {
             sizes="(max-width: 640px) 240px, (max-width: 1024px) 280px, (max-width: 1280px) 352px, 384px"
           />
         </div>
-      </div>
+      </GsapRevealGroup>
     </section>
   );
 }

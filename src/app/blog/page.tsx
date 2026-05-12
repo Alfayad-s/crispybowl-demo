@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { GsapRevealGroup } from "@/components/animation/gsap-reveal-group";
+
 export const metadata: Metadata = {
   title: "Blog",
   description: "News, recipes, and updates from Crispybowl.",
@@ -9,7 +11,11 @@ export const metadata: Metadata = {
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-white px-6 py-24 text-neutral-900 sm:px-8 lg:px-10">
-      <div className="mx-auto max-w-2xl">
+      <GsapRevealGroup
+        className="mx-auto max-w-2xl"
+        start="top 88%"
+        stagger={0.12}
+      >
         <p className="font-hero-display text-sm font-bold tracking-[0.2em] text-[#0c3d32]">
           CRISPYBOWL
         </p>
@@ -25,7 +31,7 @@ export default function BlogPage() {
         >
           ← Home
         </Link>
-      </div>
+      </GsapRevealGroup>
     </main>
   );
 }

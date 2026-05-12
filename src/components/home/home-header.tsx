@@ -1,15 +1,48 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Dialog } from "radix-ui";
 
 import { Button } from "@/components/ui/button";
+import { useHomeScrollSpy } from "@/hooks/use-home-scroll-spy";
+import { isNavLinkActive, scrollToHomeNavTarget } from "@/lib/nav-scroll";
 import { useCartStore } from "@/lib/cart-store";
 import { cn } from "@/lib/utils";
 
-import { HERO_NAV_ITEMS } from "./constants";
+import { HERO_NAV_LINKS } from "./constants";
+
+function navBrushBackground(active: boolean): CSSProperties | undefined {
+  if (!active) return undefined;
+  return {
+    backgroundImage: "url('/red-brush.png')",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center 52%",
+    backgroundSize: "100% 100%",
+  };
+}
+
+function desktopNavLinkClass(active: boolean) {
+  return cn(
+    "relative inline-block shrink-0 rounded-sm px-3 py-1.5 font-sans text-sm font-semibold tracking-wide transition xl:px-3.5 xl:py-2 xl:text-base",
+    active
+      ? "text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
+      : "text-neutral-800 hover:text-black",
+  );
+}
+
+function mobileNavLinkClass(active: boolean) {
+  return cn(
+    "block w-fit font-sans text-3xl font-semibold tracking-wide transition sm:text-4xl",
+    active
+      ? "px-5 py-2 text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]"
+      : "text-[#0c3d32] hover:text-[#cc2126]",
+  );
+}
 
 const SCROLL_THRESHOLD_PX = 8;
 /** Ignore tiny scroll jitter (px). */
@@ -18,6 +51,8 @@ const SCROLL_DELTA_PX = 6;
 const SHOW_NEAR_TOP_PX = 48;
 
 export function HomeHeader() {
+  const pathname = usePathname();
+  const activeSection = useHomeScrollSpy();
   const [scrolled, setScrolled] = useState(false);
   const [headerHidden, setHeaderHidden] = useState(false);
   const [navOpen, setNavOpen] = useState(false);
@@ -82,18 +117,28 @@ export function HomeHeader() {
         </div>
 
         <nav
-          className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex"
+          className="absolute left-1/2 hidden max-w-[calc(100%-11rem)] -translate-x-1/2 items-center gap-5 lg:flex lg:gap-6 xl:gap-8"
           aria-label="Primary"
         >
-          {HERO_NAV_ITEMS.map((label) => (
-            <a
-              key={label}
-              href="#"
-              className="font-sans text-base font-semibold tracking-wide text-neutral-800 transition hover:text-black"
-            >
-              {label}
-            </a>
-          ))}
+          {HERO_NAV_LINKS.map(({ label, href }) => {
+            const active = isNavLinkActive(href, pathname, activeSection);
+            return (
+              <Link
+                key={label}
+                href={href}
+                aria-current={active ? "page" : undefined}
+                style={navBrushBackground(active)}
+                className={desktopNavLinkClass(active)}
+                onClick={(e) => {
+                  if (scrollToHomeNavTarget(href, pathname)) {
+                    e.preventDefault();
+                  }
+                }}
+              >
+                {label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
@@ -192,17 +237,27 @@ export function HomeHeader() {
               aria-label="Mobile"
             >
               <ul className="space-y-6">
-                {HERO_NAV_ITEMS.map((label) => (
-                  <li key={label}>
-                    <a
-                      href="#"
-                      onClick={() => setNavOpen(false)}
-                      className="block font-sans text-3xl font-semibold tracking-wide text-[#0c3d32] transition hover:text-[#cc2126] sm:text-4xl"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
+                {HERO_NAV_LINKS.map(({ label, href }) => {
+                  const active = isNavLinkActive(href, pathname, activeSection);
+                  return (
+                    <li key={label}>
+                      <Link
+                        href={href}
+                        aria-current={active ? "page" : undefined}
+                        style={navBrushBackground(active)}
+                        onClick={(e) => {
+                          if (scrollToHomeNavTarget(href, pathname)) {
+                            e.preventDefault();
+                          }
+                          setNavOpen(false);
+                        }}
+                        className={mobileNavLinkClass(active)}
+                      >
+                        {label}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </nav>
 

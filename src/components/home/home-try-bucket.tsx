@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { GsapRevealGroup } from "@/components/animation/gsap-reveal-group";
 import { TryBucketAddToCartButton } from "@/components/cart/try-bucket-add-to-cart-button";
 
 import { BUCKET_7PC_OFFER } from "./home-menu-data";
@@ -13,7 +14,7 @@ export function HomeTryBucket() {
       aria-labelledby="try-bucket-heading"
       className="bg-neutral-50 px-6 py-20 sm:px-8 lg:px-10 lg:py-28"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
+      <GsapRevealGroup className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
         <div className="order-2 flex flex-col items-center text-center lg:order-1 lg:items-start lg:text-left">
           <h2
             id="try-bucket-heading"
@@ -53,7 +54,7 @@ export function HomeTryBucket() {
             />
           </div>
         </div>
-      </div>
+      </GsapRevealGroup>
     </section>
   );
 }

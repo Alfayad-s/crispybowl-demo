@@ -1,3 +1,5 @@
+import { GsapHeroIntro } from "@/components/animation/gsap-hero-intro";
+
 import { HeroChickenCarousel } from "./hero-chicken-carousel";
 import { HomeHeader } from "./home-header";
 
@@ -11,10 +13,10 @@ export function HomeHero() {
       {/* Matches mobile header height: py-4 (16) + capsule h-12 (48) + py-4 (16) ~= 80px */}
       <div aria-hidden className="h-[5rem] shrink-0 sm:h-[5.5rem]" />
 
-      <div className="relative flex min-h-0 flex-1 flex-col overflow-hidden md:flex-row">
+      <GsapHeroIntro>
         {/* Left: white ~60% */}
         <div className="relative z-10 flex min-h-0 flex-[3] flex-col justify-center bg-white px-6 py-10 md:w-[60%] md:flex-none md:py-16 md:pr-16 md:pl-8 lg:pr-22 lg:pl-12 xl:pr-28 xl:pl-16">
-          <div className="mx-auto w-full max-w-xl space-y-8 pt-0 md:pt-16 lg:pt-14">
+          <div className="hero-left-inner mx-auto w-full max-w-xl space-y-8 pt-0 md:pt-16 lg:pt-14">
             <div className="font-hero-display inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white/80 px-4 py-2 font-bold backdrop-blur-md">
               <span className="text-amber-600" aria-hidden>
                 🔥
@@ -54,15 +56,15 @@ export function HomeHero() {
 
         {/* Right: yellow ~40% */}
         <div
-          className="relative z-0 min-h-0 flex-[2] overflow-hidden rounded-t-[3rem] md:w-[40%] md:flex-none md:rounded-none"
+          className="hero-yellow relative z-0 min-h-0 flex-[2] overflow-hidden rounded-t-[3rem] md:w-[40%] md:flex-none md:rounded-none"
           style={{ backgroundColor: ACCENT_YELLOW }}
-        ></div>
+        />
 
-        {/* Chicken: centered on the 60% / 40% seam */}
-        <div className="pointer-events-none absolute top-[72%] left-1/2 z-20 w-[min(86vw,22rem)] max-w-[30rem] -translate-x-1/2 -translate-y-[40%] sm:w-[min(84vw,26rem)] sm:max-w-[34rem] md:top-1/2 md:left-[60%] md:w-[min(54vw,34rem)] md:max-w-[42rem] md:-translate-y-1/2 lg:w-[min(50vw,38rem)] lg:max-w-[48rem] xl:max-w-[52rem]">
+        {/* Chicken: mobile — lower third; md+ — center of hero row (50% / 50% of GsapHeroIntro) */}
+        <div className="hero-chicken pointer-events-none absolute bottom-4 left-1/2 z-20 w-[min(72vw,18rem)] max-w-[22rem] -translate-x-1/2 translate-y-0 sm:w-[min(70vw,22rem)] sm:max-w-[26rem] md:top-1/2 md:bottom-auto md:left-[60%] md:w-[min(38vw,30rem)] md:max-w-[38rem] md:-translate-x-1/2 md:-translate-y-1/2 lg:left-[60%] lg:w-[min(36vw,34rem)] lg:max-w-[42rem] xl:max-w-[46rem]">
           <HeroChickenCarousel />
         </div>
-      </div>
+      </GsapHeroIntro>
 
       {/* Mobile bottom nav removed (user request) */}
     </section>

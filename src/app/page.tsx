@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { HomeAbout } from "@/components/home/home-about";
+import { HomeGallery } from "@/components/home/home-gallery";
 import { HomeHero } from "@/components/home/home-hero";
 import { HomeMenu } from "@/components/home/home-menu";
 import { HomeTryBucket } from "@/components/home/home-try-bucket";
@@ -18,6 +19,7 @@ export default function Home() {
         <HomeAbout />
         <HomeMenu />
         <HomeTryBucket />
+        <HomeGallery />
       </main>
       <SplashScreen />
     </>

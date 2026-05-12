@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { GsapRevealGroup } from "@/components/animation/gsap-reveal-group";
+
 import { HomeMenuCarousel } from "./home-menu-carousel";
 import { MENU_PRODUCTS } from "./home-menu-data";
 
@@ -10,7 +12,7 @@ export function HomeMenu() {
       aria-labelledby="menu-heading"
       className="bg-neutral-50 px-6 py-20 sm:px-8 lg:px-10 lg:py-28"
     >
-      <div className="mx-auto max-w-[82rem]">
+      <GsapRevealGroup className="mx-auto max-w-[82rem]">
         <div className="max-w-4xl text-left">
           <p className="font-hero-display text-base font-bold tracking-[0.2em] text-[#cc2126] sm:text-lg md:text-xl">
             ORDER FAVORITES
@@ -51,7 +53,7 @@ export function HomeMenu() {
         </div>
 
         <HomeMenuCarousel products={MENU_PRODUCTS} />
-      </div>
+      </GsapRevealGroup>
     </section>
   );
 }
